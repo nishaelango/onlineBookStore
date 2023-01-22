@@ -168,5 +168,56 @@ namespace bookApp.Controllers
         {
             return _context.Book.Any(e => e.Id == id);
         }
+
+        public async Task<IActionResult> Reserve(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var book = await _context.Book
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+
+            return View(book);
+        }
+
+        [HttpPost, ActionName("Reserve")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ReserveConfirmed(int id)
+        {
+            var book = await _context.Book.FindAsync(id);
+            if (book.BookStatus == true)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    book.BookStatus = true;
+                    _context.Update(book);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!BookExists(book.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(book);
+        }
     }
 }

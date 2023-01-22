@@ -12,5 +12,6 @@ namespace bookApp.Models
         [Required]
         public string BookName { get; set; }
         public string Author { get; set; }
+        public bool BookStatus { get; set; }
     }
 }
