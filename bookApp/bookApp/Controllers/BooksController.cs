@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using bookApp.Data;
 using bookApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace bookApp.Controllers
 {
@@ -44,6 +45,7 @@ namespace bookApp.Controllers
         }
 
         // GET: Books/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -54,6 +56,7 @@ namespace bookApp.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,BookId,BookName,Author")] Book book)
         {
             if (ModelState.IsValid)
@@ -66,6 +69,7 @@ namespace bookApp.Controllers
         }
 
         // GET: Books/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,6 +90,7 @@ namespace bookApp.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,BookId,BookName,Author")] Book book)
         {
             if (id != book.Id)
@@ -117,6 +122,7 @@ namespace bookApp.Controllers
         }
 
         // GET: Books/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -137,6 +143,7 @@ namespace bookApp.Controllers
         // POST: Books/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var book = await _context.Book.FindAsync(id);
