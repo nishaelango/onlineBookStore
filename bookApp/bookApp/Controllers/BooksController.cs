@@ -26,6 +26,18 @@ namespace bookApp.Controllers
             return View(await _context.Book.ToListAsync());
         }
 
+        // GET: Search
+        public IActionResult Search()
+        {
+            return View();
+        }
+
+        // GET: Books Search
+        [HttpPost]
+        public async Task<IActionResult> Search(string BookName)
+        {
+            return View("Index",await _context.Book.Where(x=>x.BookName.Contains(BookName)).ToListAsync());
+        }
         // GET: Books/Details/5
         public async Task<IActionResult> Details(int? id)
         {
