@@ -61,11 +61,42 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  background-image:url('/images/aisle.jpeg');
+  height:100vh;
+  background-repeat:no-repeat;
 }
+
+h1 {
+    color: #0366d6;
+}
+
+body .book-store-container {
+  background: white;
+  opacity: 0.85;
+  border-radius:2rem;
+  padding-top: 1rem;
+  text-align:center;
+  margin-bottom:1rem;
+}
+
+body .book-store-container .custom-column {
+    max-width: 85%;
+    width: 85%;
+    position: relative;
+    margin: auto;
+    background: aliceblue;
+    border: lightgrey 1px solid;
+    padding: 2rem;
+    border-radius: 2rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+    background: white;
 }
