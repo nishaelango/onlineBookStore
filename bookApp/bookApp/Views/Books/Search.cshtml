@@ -10,18 +10,20 @@
 <hr />
 <div class="custom-column">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-10 mx-auto">
             <form asp-action="Search">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="Id" />
                 <div class="form-group">
-                    <label for="Search" class="control-label"></label>
-                    <input asp-for="BookName" class="form-control" />
-
-                </div>
-
-                <div class="form-group">
-                    <input type="submit" value="Search" class="btn btn-primary" />
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label for="Search" class="control-label"></label>
+                            <input asp-for="BookName" placeholder="Enter Bookname" class="form-control" />
+                        </div>
+                        <div class="col-md-2">
+                            <input type="submit" value="Search" class="btn btn-primary search" />
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>

@@ -34,9 +34,15 @@ namespace bookApp.Controllers
 
         // GET: Books Search
         [HttpPost]
-        public async Task<IActionResult> Search(string BookName)
+        public IActionResult Search(string BookName)
         {
-            return View("Index",await _context.Book.Where(x=>x.BookName.Contains(BookName)).ToListAsync());
+            var Book = from e in _context.Book
+                        where EF.Functions.Like(e.BookName, "%" + BookName + "%")
+                        select e;
+
+            return View("Index", Book);
+
+
         }
         // GET: Books/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -64,8 +70,7 @@ namespace bookApp.Controllers
         }
 
         // POST: Books/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
@@ -98,8 +103,7 @@ namespace bookApp.Controllers
         }
 
         // POST: Books/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]

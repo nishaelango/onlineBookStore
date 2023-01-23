@@ -9,20 +9,37 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #0366d6;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
 }
 
+
+.active a{
+    background-color: #0366d6;
+    border-radius: 1rem;
+    color: #fff !important;
+    opacity: 0.85;
+    border: 1px solid light blue;
+}
+.nav-link:hover {
+    background-color: #0366d6;
+    //border-radius: 1rem;
+    color: #fff !important;
+    opacity: 0.85;
+    border: 1px solid light blue;
+}
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+/*.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
-}
+}*/
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -92,6 +109,10 @@ body .book-store-container .custom-column {
     margin-top: 2rem;
 }
 
+.search{
+    position:relative;
+    top:1.72rem;
+}
 
 .footer {
     position: absolute;
